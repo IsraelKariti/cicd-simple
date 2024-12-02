@@ -10,6 +10,21 @@
     <script>
         const myHeader = document.getElementById('my-header');
         myHeader.innerHTML = 'xxx';
+        fetch('http://ec2-54-242-228-29.compute-1.amazonaws.com/')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                myHeader.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+
     </script>
 </body>
 </html>
